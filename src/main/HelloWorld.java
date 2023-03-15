@@ -12,8 +12,6 @@ public class HelloWorld {
 
         Scanner scanner = new Scanner(System.in);
 
-//        foreach???
-
         do {
             System.out.println("Unesite broj: ");
             try {
@@ -27,14 +25,11 @@ public class HelloWorld {
                 System.out.println("Broj je " + provjerenBroj);
             } catch (InputMismatchException err) {
                 System.out.println("Molimo unesite ispravan broj, " + err);
-                //scanner.next();
-                //uneseniBroj = 1;
-                continue;
-            } catch (NumberFormatException err) {
-                System.out.println("Molimo unesite odgovarajući format" + err);
+                scanner.next();
+                uneseniBroj = 1;
             }
         //chekirat sa hasnexInt
-        } while (uneseniBroj > 0);
+        } while (uneseniBroj >= 0);
 
         System.out.println("Zbroj parnih brojeva je " + sum);
     }
@@ -81,11 +76,11 @@ public class HelloWorld {
             case 7:
                 dayName = "Sunday";
                 break;
-            case 8:
-                if (dayOfWeek == 8) {
-                    dayName = "Holiday";
-                    break;
-                }
+//            case 8:
+//                if (dayOfWeek == 8) {
+//                    dayName = "Holiday";
+//                    break;
+//                }
             default:
                 dayName = "Invalid day";
                 break;
