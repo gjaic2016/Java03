@@ -7,7 +7,7 @@ public class HelloWorld {
 
     public static void main(String[] args) {
 
-        int uneseniBroj;
+        int uneseniBroj = 0;
         int sum = 0;
 
         Scanner scanner = new Scanner(System.in);
@@ -16,27 +16,30 @@ public class HelloWorld {
 
         do {
             System.out.println("Unesite broj: ");
-            uneseniBroj = scanner.nextInt();
             try {
+                uneseniBroj = scanner.nextInt();
                 int provjerenBroj = findEvenOdd(uneseniBroj);
+                if (uneseniBroj % 2 != 0) {
+                    break;
+                }
 
                 sum += provjerenBroj;
                 System.out.println("Broj je " + provjerenBroj);
             } catch (InputMismatchException err) {
                 System.out.println("Molimo unesite ispravan broj, " + err);
+                //scanner.next();
+                //uneseniBroj = 1;
                 continue;
-            }
-            catch (NumberFormatException err) {
+            } catch (NumberFormatException err) {
                 System.out.println("Molimo unesite odgovarajući format" + err);
-
             }
-
+        //chekirat sa hasnexInt
         } while (uneseniBroj > 0);
 
         System.out.println("Zbroj parnih brojeva je " + sum);
     }
 
-    public static int findEvenOdd(int number) {
+    public static int findEvenOdd(int number) throws InputMismatchException {
 
         if (number % 2 == 0) {
             System.out.println(number + " is even");
@@ -53,7 +56,10 @@ public class HelloWorld {
 //        int dayOfWeek = 1;
         String dayName;
 
-        switch (dayOfWeek) {
+        switch (dayOfWeek % 7) {
+            case 0:
+                dayName = "Sunday";
+                break;
             case 1:
                 dayName = "Monday";
                 break;
